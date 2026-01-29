@@ -12,7 +12,8 @@ Player::Player() {
 };
 
 void Player::update(float dt) {
-
+	m_currentAnimation->animate(dt);
+	setTextureRect( m_currentAnimation->getCurrentFrame() );
 };
 void Player::handleInput(float dt) {
 

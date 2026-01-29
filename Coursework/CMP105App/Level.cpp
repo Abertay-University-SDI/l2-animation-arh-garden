@@ -110,6 +110,8 @@ void Level::update(float dt)
 		std::cout << "Game over";
 	}
 
+	// sheep
+	m_sheep.update(dt);
 }
 
 // Render level
