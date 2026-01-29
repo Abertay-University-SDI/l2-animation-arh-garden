@@ -7,9 +7,13 @@ Level::Level(sf::RenderWindow& hwnd, Input& in) :
 	m_snake.setPosition({ 50, 50 });
 	m_snake.setFillColor(sf::Color::Green);
 
+	// sheep
 	if (!m_tex_sheep.loadFromFile("gfx/sheep_sheet.png")) {
 		std::cerr << "Image file could not be loaded. :(";
 	}
+	m_sheep.setTexture(&m_tex_sheep);
+	m_sheep.setTextureRect(sf::IntRect({0,0}, {64,64}));
+	m_sheep.setSize({ 64,64 });
 }
 
 // handle user input
@@ -113,6 +117,7 @@ void Level::render()
 {
 	beginDraw();
 	m_window.draw(m_snake);
+	m_window.draw(m_sheep);
 	endDraw();
 }
 
