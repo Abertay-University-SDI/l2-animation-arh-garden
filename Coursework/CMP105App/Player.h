@@ -7,9 +7,20 @@ class Player : public GameObject
 {
 private:
 	// animation
-	Animation m_walkDown;
+	sf::Vector2i m_spriteRes = { 64,64 };
+	float m_animSpeed = 1.f / 8.f;
+
 	Animation* m_currentAnimation;
-	
+	Animation m_walkUp;
+	Animation m_walkUpRight;
+	Animation m_walkRight;
+	Animation m_walkDownRight;
+	Animation m_walkDown;
+
+	Animation m_walkUpLeft;
+	Animation m_walkLeft;
+	Animation m_walkDownLeft;
+
 	// input
 	enum class Direction { UP, DOWN, LEFT, RIGHT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT, UP_LEFT, NONE };
 	Direction m_direction = Direction::NONE;

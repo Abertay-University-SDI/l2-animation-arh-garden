@@ -6,9 +6,46 @@ Player::Player(Input* inputRef) {
 	setPosition({ 200, 200 });
 
 	// animations
-	m_walkDown.addFrame( sf::IntRect({ 0,0 }, { 64,64 }) );
-	m_walkDown.addFrame( sf::IntRect({ 64,0 }, { 64,64 }) );
-	m_walkDown.setFrameSpeed(1.f / 3.f);
+	m_walkUp.addFrame(sf::IntRect({ 256,0 }, m_spriteRes));
+	m_walkUp.addFrame(sf::IntRect({ 320,0 }, m_spriteRes));
+	m_walkUp.addFrame(sf::IntRect({ 384,0 }, m_spriteRes));
+	m_walkUp.addFrame(sf::IntRect({ 448,0 }, m_spriteRes));
+	m_walkUp.setFrameSpeed(m_animSpeed);
+
+	m_walkUpRight.addFrame(sf::IntRect({ 0,  64 }, m_spriteRes));
+	m_walkUpRight.addFrame(sf::IntRect({ 64, 64 }, m_spriteRes));
+	m_walkUpRight.addFrame(sf::IntRect({ 128,64 }, m_spriteRes));
+	m_walkUpRight.addFrame(sf::IntRect({ 192,64 }, m_spriteRes));
+	m_walkUpRight.setFrameSpeed(m_animSpeed);
+
+	m_walkRight.addFrame(sf::IntRect({ 256,64 }, m_spriteRes));
+	m_walkRight.addFrame(sf::IntRect({ 320,64 }, m_spriteRes));
+	m_walkRight.addFrame(sf::IntRect({ 384,64 }, m_spriteRes));
+	m_walkRight.addFrame(sf::IntRect({ 448,64 }, m_spriteRes));
+	m_walkRight.setFrameSpeed(m_animSpeed);
+
+	m_walkDownRight.addFrame(sf::IntRect({ 0,  128 }, m_spriteRes));
+	m_walkDownRight.addFrame(sf::IntRect({ 64, 128 }, m_spriteRes));
+	m_walkDownRight.addFrame(sf::IntRect({ 128,128 }, m_spriteRes));
+	m_walkDownRight.addFrame(sf::IntRect({ 192,128 }, m_spriteRes));
+	m_walkDownRight.setFrameSpeed(m_animSpeed);
+
+	m_walkDown.addFrame( sf::IntRect({ 0, 0 }, m_spriteRes) );
+	m_walkDown.addFrame( sf::IntRect({ 64,0 }, m_spriteRes) );
+	m_walkDown.setFrameSpeed(m_animSpeed);
+
+
+	m_walkUpLeft = m_walkUpRight;
+	m_walkUpLeft.setFlipped(true);
+	m_walkUpLeft.setFrameSpeed(m_animSpeed);
+
+	m_walkLeft = m_walkRight;
+	m_walkLeft.setFlipped(true);
+	m_walkLeft.setFrameSpeed(m_animSpeed);
+
+	m_walkDownLeft = m_walkDownRight;
+	m_walkDownLeft.setFlipped(true);
+	m_walkDownLeft.setFrameSpeed(m_animSpeed);
 
 	m_currentAnimation = &m_walkDown;
 };
@@ -25,27 +62,35 @@ void Player::update(float dt) {
 	{
 	case Direction::UP:
 		move({ 0, -orthog_speed });
+		m_currentAnimation = &m_walkUp;
 		break;
 	case Direction::UP_RIGHT:
 		move({ diagonal_speed, -diagonal_speed });
+		m_currentAnimation = &m_walkUpRight;
 		break;
 	case Direction::RIGHT:
 		move({ orthog_speed,0 });
+		m_currentAnimation = &m_walkRight;
 		break;
 	case Direction::DOWN_RIGHT:
 		move({ diagonal_speed, diagonal_speed });
+		m_currentAnimation = &m_walkDownRight;
 		break;
 	case Direction::DOWN:
 		move({ 0, orthog_speed });
+		m_currentAnimation = &m_walkDown;
 		break;
 	case Direction::DOWN_LEFT:
 		move({ -diagonal_speed, diagonal_speed });
+		m_currentAnimation = &m_walkDownLeft;
 		break;
 	case Direction::LEFT:
 		move({ -orthog_speed,0 });
+		m_currentAnimation = &m_walkLeft;
 		break;
 	case Direction::UP_LEFT:
 		move({ -diagonal_speed, -diagonal_speed });
+		m_currentAnimation = &m_walkUpLeft;
 		break;
 	}
 
