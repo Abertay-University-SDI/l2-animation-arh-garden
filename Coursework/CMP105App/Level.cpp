@@ -3,9 +3,6 @@
 Level::Level(sf::RenderWindow& hwnd, Input& in) :
 	BaseLevel(hwnd, in)
 {
-	/*m_snake.setRadius(20);
-	m_snake.setPosition({ 50, 50 });
-	m_snake.setFillColor(sf::Color::Green);*/
 
 	// sheep
 	if (!m_tex_sheep.loadFromFile("gfx/sheep_sheet.png")) {
@@ -21,6 +18,7 @@ void Level::handleInput(float dt)
 {
 	if (m_gameOver) return;
 
+	// sheep
 	m_sheep.handleInput(dt);
 }
 
@@ -47,7 +45,6 @@ void Level::update(float dt)
 void Level::render()
 {
 	beginDraw();
-	//m_window.draw(m_snake);
 	m_window.draw(m_sheep);
 	endDraw();
 }

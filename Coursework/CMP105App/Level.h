@@ -18,8 +18,6 @@ private:
 	// Default functions for rendering to the screen.
 
 	// Default variables for level class.
-	
-	//sf::CircleShape m_snake;
 
 	bool m_gameOver = false;
 
