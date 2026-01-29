@@ -5,6 +5,8 @@
 class Player : public GameObject
 {
 private:
+	Animation m_walkDown;
+	Animation* m_currentAnimation;
 
 public:
 	Player();
