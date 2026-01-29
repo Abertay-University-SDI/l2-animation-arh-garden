@@ -3,6 +3,8 @@
 #include "Framework/BaseLevel.h"
 #include "Framework/GameObject.h"
 
+#include "Player.h"
+
 class Level : BaseLevel {
 public:
 	Level(sf::RenderWindow& window, Input& input);
@@ -26,4 +28,6 @@ private:
 	const float INPUT_BUFFER_LENGTH = 0.1f;
 	const float APPROX_ONE_OVER_ROOT_TWO = 0.70710678f;	// 1 / sqrt(2)
 
+	Player m_sheep;
+	sf::Texture m_tex_sheep;
 };
